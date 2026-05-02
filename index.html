@@ -1,1 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terraform Topic-Wise Notebook</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans">
+  <header class="bg-slate-900 text-white p-6 shadow-lg">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl font-bold">Terraform Complete Topic-Wise Notebook</h1>
+      <p class="text-slate-300 mt-2">Practical DevOps Learning Guide with Code Examples & Architecture Diagrams</p>
+    </div>
+  </header>
 
+  <main class="max-w-7xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-4 gap-6">
+    <!-- Sidebar -->
+    <aside class="lg:col-span-1 bg-white rounded-2xl shadow p-4 sticky top-4 h-fit">
+      <h2 class="text-xl font-semibold mb-4">Topics</h2>
+      <nav class="space-y-2 text-sm">
+        <a href="#intro" class="block hover:text-blue-600">1. Introduction to Terraform</a>
+        <a href="#providers" class="block hover:text-blue-600">2. Providers</a>
+        <a href="#resources" class="block hover:text-blue-600">3. Resources</a>
+        <a href="#variables" class="block hover:text-blue-600">4. Variables</a>
+        <a href="#outputs" class="block hover:text-blue-600">5. Outputs</a>
+        <a href="#state" class="block hover:text-blue-600">6. State Management</a>
+        <a href="#modules" class="block hover:text-blue-600">7. Modules</a>
+        <a href="#backend" class="block hover:text-blue-600">8. Remote Backend</a>
+        <a href="#cicd" class="block hover:text-blue-600">9. CI/CD Integration</a>
+      </nav>
+    </aside>
+
+    <!-- Content -->
+    <section class="lg:col-span-3 space-y-8">
+      <!-- Intro -->
+      <div id="intro" class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-bold mb-4">1. Introduction to Terraform</h2>
+        <p class="mb-4">Terraform is an Infrastructure as Code (IaC) tool used to automate cloud and on-prem infrastructure deployment.</p>
+        <div class="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto">
+<pre>terraform init
+terraform plan
+terraform apply
+terraform destroy</pre>
+        </div>
+        <div class="mt-4 border rounded-lg p-4 bg-slate-50">
+          <h3 class="font-semibold mb-2">Basic Workflow Diagram</h3>
+          <pre class="text-sm">
+Developer Code → terraform init → terraform plan → terraform apply → Infrastructure Created
+          </pre>
+        </div>
+      </div>
+
+      <!-- Providers -->
+      <div id="providers" class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-bold mb-4">2. Providers</h2>
+        <p class="mb-4">Providers connect Terraform with cloud platforms like Azure, AWS, and GCP.</p>
+        <div class="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto">
+<pre>provider "azurerm" {
+  features {}
+  subscription_id = var.subscription_id
+}</pre>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <div id="resources" class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-bold mb-4">3. Resources</h2>
+        <p class="mb-4">Resources define actual infrastructure components.</p>
+        <div class="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto">
+<pre>resource "azurerm_resource_group" "rg" {
+  name     = "dev-rg"
+  location = "Central India"
+}</pre>
+        </div>
+        <div class="mt-4 border rounded-lg p-4 bg-slate-50">
+          <h3 class="font-semibold mb-2">Architecture Diagram</h3>
+          <pre class="text-sm">
+Terraform Code → Azure Provider → Resource Group → VM → Storage → Network
+          </pre>
+        </div>
+      </div>
+
+      <!-- Variables -->
+      <div id="variables" class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-bold mb-4">4. Variables</h2>
+        <p class="mb-4">Variables make code reusable and dynamic.</p>
+        <div class="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto">
+<pre>variable "location" {
+  default = "Central India"
+}
+
+variable "vm_size" {
+  type = string
+}</pre>
+        </div>
+      </div>
+
+      <!-- Outputs -->
+      <div id="outputs" class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-bold mb-4">5. Outputs</h2>
+        <div class="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto">
+<pre>output "resource_group_name" {
+  value = azurerm_resource_group.rg.name
+}</pre>
+        </div>
+      </div>
+
+      <!-- State -->
+      <div id="state" class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-bold mb-4">6. State Management</h2>
+        <p class="mb-4">Terraform stores infrastructure mapping in terraform.tfstate.</p>
+        <div class="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto">
+<pre>terraform state list
+terraform state show azurerm_resource_group.rg</pre>
+        </div>
+      </div>
+
+      <!-- Modules -->
+      <div id="modules" class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-bold mb-4">7. Modules</h2>
+        <p class="mb-4">Modules help organize reusable infrastructure blocks.</p>
+        <div class="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto">
+<pre>module "network" {
+  source = "./modules/network"
+}</pre>
+        </div>
+      </div>
+
+      <!-- Backend -->
+      <div id="backend" class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-bold mb-4">8. Remote Backend</h2>
+        <div class="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto">
+<pre>terraform {
+  backend "azurerm" {
+    resource_group_name  = "tfstate-rg"
+    storage_account_name = "tfstateprod123"
+    container_name       = "tfstate"
+    key                  = "prod.terraform.tfstate"
+  }
+}</pre>
+        </div>
+      </div>
+
+      <!-- CI/CD -->
+      <div id="cicd" class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-bold mb-4">9. CI/CD Integration</h2>
+        <p class="mb-4">Terraform can integrate with GitHub Actions, Azure DevOps, and Jenkins.</p>
+        <div class="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto">
+<pre>GitHub Push → Pipeline Trigger → terraform init → terraform plan → approval → terraform apply</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-900 text-white text-center p-4 mt-8">
+    <p>Terraform DevOps Notebook | Designed for Practical Learning</p>
+  </footer>
+</body>
+</html>
